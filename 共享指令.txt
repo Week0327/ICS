@@ -1,0 +1,19 @@
+挂载命令：
+
+view sourceprint?
+1
+正确的是：
+2
+使用命令： sudo mount -t fuse.vmhgfs-fuse .host:/hitics  /mnt/hgfs -o allow_other（如果卸载，就把mount -t换成umount -a）
+3
+或sudo vmhgfs-fuse .host:/VM_Shared /mnt/hgfs
+4
+ （其中.host:/Documents是共享名，只需把Documents换成使用vmware-hgfsclient 命令得到的目录，/mnt/hgfs是挂载点。）
+5
+ 
+6
+如果每次重启之后想让系统自动挂载 #vi /etc/fstab:
+7
+在最后添加一行：
+8
+.host:/VM_Shared /mnt/hgfs fuse.vmhgfs-fuse allow_other 0 0
